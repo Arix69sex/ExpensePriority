@@ -1,33 +1,37 @@
-# name, calories, protein, carb, fat, price for each 100g
 import random
 from datetime import datetime
 
 random.seed(datetime.now())
-
-# 100g of each fooodstuff, with their respective nutritional value and price
-foods = [
-    ['corn', 60, 4, 5, 3, 2.5],
-    ['rice', 39, 3, 7, 1, 0.7],
-    ['lettuce', 20, 2, 2, 0.5, 1.1],
-    ['hay', 76, 5, 10, 2, 2.2],
-    ['grass', 15, 1.375, 1.375, 0.5, 0.9],
-    ['grain', 24, 2, 3, 0.5, 1.4]
+# List of expenses of the month
+# Name | Expense value | Importance from 1 to 10
+expenses = [
+    ['water', 60, 10],
+    ['electricity', 39, 10],
+    ['food', 39, 10],
+    ['internet', 20, 7],
+    ['mobile phone', 15, 7],
+    ['new clothes', 120, 5],
+    ['takeout', 50, 2],
+    ['fix car', 50, 4],
+    ['savings', 100, 3],
 ]
 
 numberOfGenerations = 100
 
-
 def generatePopulation(size):
     population = []
-    score = 0
     for i in range(size):
-        cornProb = random.randint(0, 1)
-        riceProb = random.randint(0, 1)
-        lettuceProb = random.randint(0, 1)
-        hayProb = random.randint(0, 1)
-        grassProb = random.randint(0, 1)
-        grainProb = random.randint(0, 1)
-        new = [cornProb, riceProb, lettuceProb, hayProb, grassProb, grainProb]
+        waterProb = random.randint(0, 1)
+        electricityProb = random.randint(0, 1)
+        foodProb = random.randint(0, 1)
+        internetProb = random.randint(0, 1)
+        phoneProb = random.randint(0, 1)
+        clothesProb = random.randint(0, 1)
+        takeoutProb = random.randint(0, 1)
+        carProb = random.randint(0, 1)
+        savingsProb = random.randint(0, 1)
+        new = [waterProb, electricityProb, foodProb, internetProb, phoneProb, clothesProb, takeoutProb, carProb, savingsProb]
+        print(f'Pob {i} ' , new)
         population.append(new)
     return population
 
@@ -55,8 +59,9 @@ def calculateFitness(solution, funds):
     totalPrice = 0
     for i in range(len(solution)):
         if solution[i] == 1:
-            score += foods[i][1]
-            totalPrice += foods[i][5]
+            score += expenses[i][2]
+            totalPrice += expenses[i][1]
+    #print(totalPrice, funds)
     if totalPrice > funds:
         score = 0
     return score
@@ -71,8 +76,8 @@ def selection(population, funds):
 
 
 def middlePointCrossover(parents):
-    offspring1 = parents[0][0:3] + parents[1][3:6]
-    offspring2 = parents[1][0:3] + parents[0][3:6]
+    offspring1 = parents[0][0:5] + parents[1][5:9]
+    offspring2 = parents[1][0:5] + parents[0][5:9]
 
     return offspring1, offspring2
 
@@ -82,7 +87,7 @@ def formatResult(array, funds):
     print(array)
     for i in range(len(array)):
         if array[i] == 1:
-            formattedArray.append(foods[i][0])
+            formattedArray.append(expenses[i][0])
     score = calculateFitness(array, funds)
     print("Score of best solution: " + str(score))
     print("Solution composed of: ")
@@ -117,8 +122,6 @@ def run(size, iterations, funds):
         key=lambda genome: calculateFitness(genome, funds),
         reverse=True
     )
-    # formatResult(population[0], funds)
     return population[0]
 
-
-print(run(150, 50, 5))
+#print(run(150, 50, 50))

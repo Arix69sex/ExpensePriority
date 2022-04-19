@@ -212,27 +212,12 @@
     </column>
     <column>
      <property name="text">
-      <string>Calories</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Protein</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Carbs</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Fats</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
       <string>Price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Importance</string>
      </property>
     </column>
    </widget>
@@ -245,34 +230,19 @@
       <height>192</height>
      </rect>
     </property>
-    <column>
+       <column>
      <property name="text">
       <string>Name</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Calories</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Protein</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Carbs</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Fats</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
       <string>Price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Importance</string>
      </property>
     </column>
    </widget>
