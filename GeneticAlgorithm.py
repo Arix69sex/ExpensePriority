@@ -5,14 +5,14 @@ random.seed(datetime.now())
 # List of expenses of the month
 # Name | Expense value | Importance from 1 to 10
 expenses = [
-    ['water', 60, 10],
-    ['electricity', 39, 10],
-    ['food', 39, 10],
-    ['internet', 20, 7],
-    ['mobile phone', 15, 7],
-    ['new clothes', 120, 5],
-    ['takeout', 50, 2],
-    ['fix car', 50, 4],
+    ['new wireless earbuds', 150, 4],
+    ['new gaming chair', 600, 3],
+    ['gym membership', 90, 7],
+    ['internet', 110, 9],
+    ['mobile phone', 60, 9],
+    ['new clothes', 350, 5],
+    ['takeout', 55, 2],
+    ['car maintenance', 320, 4],
     ['savings', 100, 3],
 ]
 

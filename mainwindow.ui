@@ -212,7 +212,7 @@
     </column>
     <column>
      <property name="text">
-      <string>Price</string>
+      <string>Amount</string>
      </property>
     </column>
     <column>
@@ -237,7 +237,7 @@
     </column>
     <column>
      <property name="text">
-      <string>Price</string>
+      <string>Amount</string>
      </property>
     </column>
     <column>
