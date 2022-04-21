@@ -5,7 +5,7 @@ import GeneticAlgorithm as GA
 
 
 class MainWindow(qtw.QMainWindow):
-    tableKeys = ['Name', 'Price', 'Importance']
+    tableKeys = ['Name', 'Amount', 'Importance']
     expenseDict = []
 
     def __init__(self):
@@ -21,7 +21,7 @@ class MainWindow(qtw.QMainWindow):
         self.itemsTableWidget.setRowCount(len(self.expenseDict))
         for i in range(len(self.expenseDict)):
             self.itemsTableWidget.setItem(i, 0, qtw.QTableWidgetItem(self.expenseDict[i]["Name"]))
-            self.itemsTableWidget.setItem(i, 1, qtw.QTableWidgetItem(str(self.expenseDict[i]["Price"])))
+            self.itemsTableWidget.setItem(i, 1, qtw.QTableWidgetItem(str(self.expenseDict[i]["Amount"])))
             self.itemsTableWidget.setItem(i, 2, qtw.QTableWidgetItem(str(self.expenseDict[i]["Importance"])))
 
     def runGA(self):
@@ -40,7 +40,7 @@ class MainWindow(qtw.QMainWindow):
                 if result[i] == 1:
 
                     self.offspringTableWidget.setItem(actualIndex, 0, qtw.QTableWidgetItem(self.expenseDict[i]["Name"]))
-                    self.offspringTableWidget.setItem(actualIndex, 1, qtw.QTableWidgetItem(str(self.expenseDict[i]["Price"])))
+                    self.offspringTableWidget.setItem(actualIndex, 1, qtw.QTableWidgetItem(str(self.expenseDict[i]["Amount"])))
                     self.offspringTableWidget.setItem(actualIndex, 2, qtw.QTableWidgetItem(str(self.expenseDict[i]["Importance"])))
                     actualIndex += 1
 

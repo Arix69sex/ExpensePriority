@@ -16,8 +16,6 @@ expenses = [
     ['savings', 100, 3],
 ]
 
-numberOfGenerations = 100
-
 def generatePopulation(size):
     population = []
     for i in range(size):
@@ -124,4 +122,3 @@ def run(size, iterations, funds):
     )
     return population[0]
 
-#print(run(150, 50, 50))
