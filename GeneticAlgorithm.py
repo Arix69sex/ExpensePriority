@@ -75,7 +75,7 @@ def selection(population, funds):
 
 def middlePointCrossover(parents):
     offspring1 = parents[0][0:5] + parents[1][5:9]
-    offspring2 = parents[1][0:5] + parents[0][5:9]
+    offspring2 = parents[0][5:9] + parents[1][0:5]
 
     return offspring1, offspring2
 
