@@ -16,6 +16,7 @@ expenses = [
     ['savings', 100, 3],
 ]
 
+
 def generatePopulation(size):
     population = []
     for i in range(size):
@@ -28,8 +29,9 @@ def generatePopulation(size):
         takeoutProb = random.randint(0, 1)
         carProb = random.randint(0, 1)
         savingsProb = random.randint(0, 1)
-        new = [waterProb, electricityProb, foodProb, internetProb, phoneProb, clothesProb, takeoutProb, carProb, savingsProb]
-        print(f'Pob {i} ' , new)
+        new = [waterProb, electricityProb, foodProb, internetProb,
+               phoneProb, clothesProb, takeoutProb, carProb, savingsProb]
+        print(f'Pob {i} ', new)
         population.append(new)
     return population
 
@@ -55,9 +57,11 @@ def populationFitness(population, funds):
 def calculateFitness(solution, funds):
     score = 0
     totalPrice = 0
+    ##print("Solution: ", solution)
     for i in range(len(solution)):
         if solution[i] == 1:
-            score += expenses[i][2]
+            # Our score is decided as the most value we can get, paying as little as posible and everything multiplied by 100 to make the numbers more readable
+            score += (expenses[i][2] / expenses[i][1]) * 100
             totalPrice += expenses[i][1]
     #print(totalPrice, funds)
     if totalPrice > funds:
@@ -66,9 +70,14 @@ def calculateFitness(solution, funds):
 
 
 def selection(population, funds):
+    fitnessWeights = [calculateFitness(
+        population[i], funds) for i in range(len(population))]
+    if (set(fitnessWeights) == {0}):
+        raise ValueError("All fitness weights are 0, try again with a higher funds value.")
     return random.choices(
         population=population,
-        weights=[calculateFitness(population[i], funds) for i in range(len(population))],
+        weights=[calculateFitness(population[i], funds)
+                 for i in range(len(population))],
         k=2
     )
 
@@ -114,12 +123,11 @@ def run(size, iterations, funds):
         population = nextGen
         nextGen = []
 
-    print("Finishing fitness value: " + str(populationFitness(population, funds)))
+    print("Finishing fitness value: " +
+          str(populationFitness(population, funds)))
     population = sorted(
         population,
         key=lambda genome: calculateFitness(genome, funds),
         reverse=True
     )
     return population[0]
-
-
