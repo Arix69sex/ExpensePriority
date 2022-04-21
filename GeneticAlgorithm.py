@@ -20,19 +20,11 @@ expenses = [
 def generatePopulation(size):
     population = []
     for i in range(size):
-        waterProb = random.randint(0, 1)
-        electricityProb = random.randint(0, 1)
-        foodProb = random.randint(0, 1)
-        internetProb = random.randint(0, 1)
-        phoneProb = random.randint(0, 1)
-        clothesProb = random.randint(0, 1)
-        takeoutProb = random.randint(0, 1)
-        carProb = random.randint(0, 1)
-        savingsProb = random.randint(0, 1)
-        new = [waterProb, electricityProb, foodProb, internetProb,
-               phoneProb, clothesProb, takeoutProb, carProb, savingsProb]
-        print(f'Pob {i} ', new)
-        population.append(new)
+        generated = []
+        for _ in range(len(expenses)):
+            generated.append(random.randint(0, 1))
+        print(f'Pob {i} ', generated)
+        population.append(generated)
     return population
 
 
